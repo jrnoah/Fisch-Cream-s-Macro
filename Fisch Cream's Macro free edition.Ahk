@@ -15,7 +15,7 @@ If (Control = "ERROR") {
 }
 Control := StrSplit(Control, "|")
 If (Control[2]) {
-	Msgbox The control settings are outdated. Please check the #for-buyer channel.`nRestore the settings to their default values.
+	Msgbox The control settings are outdated.`nRestored the settings to their default values.
 	IniWrite, 0.05, Settings.ini, Fisch, Control 
 	ExitApp
 }
@@ -39,7 +39,7 @@ Timer := A_TickCount
 Loop,
 {
 	Send {down}{enter}
-	If (A_TickCount - Timer >= 40000) { ; incase macro break it do again every 5 second after no activity
+	If (A_TickCount - Timer >= 40000) { 
 		Reels()
 		Timer := A_TickCount
 	}
@@ -164,11 +164,8 @@ Loop,
 		}
 	}
 }
-MsgBox, Got Outside Loop Somehow
 ExitApp
-Return
 $Space::ExitApp
-
 Reels(x := 0, Stop := false) {
 	If (!x) {
 		Sleep 2000
@@ -195,10 +192,7 @@ Reels(x := 0, Stop := false) {
 		}
 	}
 	Click, Up
-	If (Whitebar) {
-		Return True
-	}
-	Return False
+	Return % Whitebar
 }
 GetRobloxHWND() {
 	if (hwnd := WinExist("Roblox ahk_exe RobloxPlayerBeta.exe"))
