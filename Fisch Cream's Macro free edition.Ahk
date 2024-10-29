@@ -6,17 +6,17 @@ if (A_ScreenDPI*100//96 != 100) {
 }
 If !FileExist("Settings.ini") {
 	Msgbox,,Fisch Macro,You don't have a settings file yet. Would you like to create one? Press OK to proceed
-	IniWrite, 0.05, Settings.ini, Fisch, Control 
+	IniWrite, 0.15, Settings.ini, Fisch, Control 
 }
 IniRead, Control, Settings.ini, Fisch, Control 
 If (Control = "ERROR") {
-	IniWrite, 0.05, Settings.ini, Fisch, Control 
-	Control := "0.05"
+	IniWrite, 0.15, Settings.ini, Fisch, Control 
+	Control := "0.15"
 }
 Control := StrSplit(Control, "|")
 If (Control[2]) {
 	Msgbox The control settings are outdated.`nRestored the settings to their default values.
-	IniWrite, 0.05, Settings.ini, Fisch, Control 
+	IniWrite, 0.15, Settings.ini, Fisch, Control 
 	ExitApp
 }
 Control := Floor(96+(Control[1]*326.67)) ; calculating the catch bar size pretty pro right
